@@ -31,7 +31,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/regEmail"
+            android:id="@+id/register_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="14dp"
@@ -44,7 +44,7 @@
             android:textColor="@color/white" />
 
         <EditText
-            android:id="@+id/regFullname"
+            android:id="@+id/register_fullname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="14dp"
@@ -57,7 +57,7 @@
             android:textColor="@color/white" />
 
         <EditText
-            android:id="@+id/regPass"
+            android:id="@+id/register_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="14dp"
@@ -70,7 +70,7 @@
             android:textColor="@color/white" />
 
         <EditText
-            android:id="@+id/regPassConfirm"
+            android:id="@+id/register_password_confirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="14dp"
@@ -100,7 +100,7 @@
                 android:textColor="@color/white"
                 android:textStyle="bold" />
             <TextView
-                android:id="@+id/tvSign"
+                android:id="@+id/tv_sign"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="  Log in"
@@ -112,7 +112,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btnRegister"
+            android:id="@+id/btn_register"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:background="@drawable/btn_login"
@@ -127,14 +127,17 @@
             android:stateListAnimator="@null" />
 
         <ProgressBar
-            android:id="@+id/progressBar1"
+            android:id="@+id/progress_bar"
             style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/ll"
             android:layout_marginLeft="100dp"
             android:layout_marginTop="35dp"
-            android:visibility="invisible"/>
+            android:visibility="invisible"
+            android:indeterminate="true"
+            android:indeterminateTintMode="src_atop"
+            android:indeterminateTint="@color/white"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -40,11 +40,17 @@ public class LoginFragment extends Fragment {
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        fragmentLoginBinding = null;
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_login, container, false);
-        return view;
+        fragmentLoginBinding = FragmentLoginBinding.inflate(inflater, container, false);
+        return fragmentLoginBinding.getRoot();
     }
 
     @Override
@@ -53,11 +59,11 @@ public class LoginFragment extends Fragment {
 
         final NavController navController = Navigation.findNavController(view);
         mAuth = FirebaseAuth.getInstance();
-        EditText email = view.findViewById(R.id.login_email);
-        EditText password = view.findViewById(R.id.login_password);
-        TextView txtRegister = view.findViewById(R.id.tv_register);
-        Button btnLogin = view.findViewById(R.id.btn_login);
-        ProgressBar progressBar = view.findViewById(R.id.progress_bar);
+        EditText email = fragmentLoginBinding.loginEmail;
+        EditText password = fragmentLoginBinding.loginPassword;
+        TextView txtRegister = fragmentLoginBinding.tvRegister;
+        Button btnLogin = fragmentLoginBinding.btnLogin;
+        ProgressBar progressBar = fragmentLoginBinding.progressBar;
 
         txtRegister.setOnClickListener( v -> {
             navController.navigate(R.id.action_loginFragment_to_registerFragment);
