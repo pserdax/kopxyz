@@ -30,6 +30,7 @@ import java.util.concurrent.Executor;
 public class LoginFragment extends Fragment {
     private FirebaseAuth mAuth;
     private FragmentLoginBinding fragmentLoginBinding;
+    NavController navController;
 
     @Override
     public void onStart() {
@@ -37,6 +38,12 @@ public class LoginFragment extends Fragment {
 
         //Check if user is signed in (not-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        if(currentUser != null) {
+        navController = Navigation.findNavController(requireView());
+        navController.navigate(R.id.action_loginFragment_to_menuFragment);
+
+        }
     }
 
     @Override
@@ -57,7 +64,7 @@ public class LoginFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        final NavController navController = Navigation.findNavController(view);
+        navController = Navigation.findNavController(view);
         mAuth = FirebaseAuth.getInstance();
         EditText email = fragmentLoginBinding.loginEmail;
         EditText password = fragmentLoginBinding.loginPassword;

@@ -24,11 +24,27 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 public class RegisterFragment extends Fragment {
     private FirebaseAuth mAuth;
     private FragmentRegisterBinding fragmentRegisterBinding;
+    NavController navController;
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        //Check if user is signed in (not-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        if(currentUser != null) {
+            navController = Navigation.findNavController(requireView());
+            navController.navigate(R.id.action_loginFragment_to_menuFragment);
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,7 +65,7 @@ public class RegisterFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        final NavController navController  = Navigation.findNavController(view);
+        navController  = Navigation.findNavController(view);
         mAuth = FirebaseAuth.getInstance();
         EditText email = fragmentRegisterBinding.registerEmail;
         EditText fullName = fragmentRegisterBinding.registerFullname;

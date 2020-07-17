@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.kop.databinding.FragmentMenuBinding;
+import com.example.tiderdemo.AlienFragment;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 public class MenuFragment extends Fragment {
@@ -33,7 +34,7 @@ public class MenuFragment extends Fragment {
         ChipNavigationBar chipNavigationBar = view.findViewById(R.id.chipNavigationBar);
 
         chipNavigationBar.setItemSelected(R.id.home, true);
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new HotFragment()).commit();
 
         chipNavigationBar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
             @Override
@@ -55,9 +56,8 @@ public class MenuFragment extends Fragment {
                         break;
 
                     case R.id.alien:
-                        fragment = new HomeFragment();
+                        fragment = new AlienFragment();
                         break;
-
 
                 }
                 if (fragment != null) {
