@@ -30,10 +30,12 @@ public class MenuFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        fragmentMenuBinding.chipNavigationBar.setItemSelected(R.id.home, true);
+        ChipNavigationBar chipNavigationBar = view.findViewById(R.id.chipNavigationBar);
+
+        chipNavigationBar.setItemSelected(R.id.home, true);
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
 
-        fragmentMenuBinding.chipNavigationBar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
+        chipNavigationBar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
             @Override
             public void onItemSelected(int i) {
                 switch (i) {

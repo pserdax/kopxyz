@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,10 +53,11 @@ public class LoginFragment extends Fragment {
 
         final NavController navController = Navigation.findNavController(view);
         mAuth = FirebaseAuth.getInstance();
-        EditText email = fragmentLoginBinding.loginEmail;
-        EditText password = fragmentLoginBinding.loginPassword;
-        TextView txtRegister = fragmentLoginBinding.tvRegister;
-        Button btnLogin = fragmentLoginBinding.btnLogin;
+        EditText email = view.findViewById(R.id.login_email);
+        EditText password = view.findViewById(R.id.login_password);
+        TextView txtRegister = view.findViewById(R.id.tv_register);
+        Button btnLogin = view.findViewById(R.id.btn_login);
+        ProgressBar progressBar = view.findViewById(R.id.progress_bar);
 
         txtRegister.setOnClickListener( v -> {
             navController.navigate(R.id.action_loginFragment_to_registerFragment);
@@ -75,17 +77,17 @@ public class LoginFragment extends Fragment {
                 return;
             }
 
-            fragmentLoginBinding.progressBar.setVisibility(View.VISIBLE);
+            progressBar.setVisibility(View.VISIBLE);
 
             mAuth.signInWithEmailAndPassword(mEmail,mPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()) {
                         Toast.makeText(getActivity(), "Logged in Successfully!", Toast.LENGTH_SHORT).show();
-                        navController.navigate(R.id.action_loginFragment_to_mainActivity);
+                        navController.navigate(R.id.action_loginFragment_to_menuFragment);
                     } else {
                         Toast.makeText(getActivity(), "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                        fragmentLoginBinding.progressBar.setVisibility(View.GONE);
+                        progressBar.setVisibility(View.GONE);
                     }
                 }
                     });
