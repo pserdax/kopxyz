@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/hot"
+        android:icon="@drawable/ic_hot"
+        android:title="@string/txt_hot"
+        app:cnb_backgroundColor="@color/brown"
+        app:cnb_iconColor="@color/white"
+        app:cnb_textColor="@color/white"/>
+
+    <item
+        android:id="@+id/notification"
+        android:icon="@drawable/ic_notification"
+        android:title="@string/txt_notification"
+        app:cnb_backgroundColor="@color/brown"
+        app:cnb_iconColor="@color/white"
+        app:cnb_textColor="@color/white"/>
+
+    <item
+        android:id="@+id/bookmark"
+        android:icon="@drawable/ic_bookmark"
+        android:title="@string/txt_profile"
+        app:cnb_backgroundColor="@color/brown"
+        app:cnb_iconColor="@color/white"
+        app:cnb_textColor="@color/white"/>
+
+    <item
+        android:id="@+id/alien"
+        android:icon="@drawable/ic_alien"
+        android:title="@string/txt_profile"
+        app:cnb_backgroundColor="@color/brown"
+        app:cnb_iconColor="@color/white"
+        app:cnb_textColor="@color/white"/>
+
+
+</menu>
